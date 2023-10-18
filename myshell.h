@@ -7,53 +7,30 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
 
-/**
- * struct vars_s - Variables
- * @av: Arguments
- * @buffer: Command buffer
- * @commands: Array of commands
- * @status: Last exit status
- * @env: Environment variables
- * @interactive: Interactive mode flag
- */
-typedef struct vars_s
+/* Define structures and types as needed for your program */
+
+typedef struct
 {
-	char **av;
+	char **env;
+	char **argv;
 	char *buffer;
 	char **commands;
-	int status;
-	char **env;
-	int interactive;
+	char **av;
+	unsigned int count;
+	unsigned int status;
 } vars_t;
 
-/* main.c */
-int main(void);
+/* Function prototypes */
 
-/* execute_command.c */
-void execute_command(char *command);
-
-/* builtins.c */
-int execute_builtin(vars_t *vars);
-void custom_exit(vars_t *vars);
-void _env(vars_t *vars);
-void _setenv(vars_t *vars);
-void _unsetenv(vars_t *vars);
-
-/* helper_functions.c */
-char *_getline(char **lineptr, size_t *n, FILE *stream);
-char *_strtok(char *str, const char *delim);
-int _atoi(char *s);
-void _puts(char *str);
-void _puts2(char *str);
-int _strcmpr(const char *s1, const char *s2);
-char **tokenize_commands(char *line);
-char *add_key_value(char *key, char *value);
-char *add_value(char *key, char *value);
-void replace_value(char ***env, char *key, char *new_value);
-char **find_key(char **env, char *key);
-char **add_key(char ***env, char *key);
+void ctrl_sig_handler(int unused_var, unsigned int *sig_received);
+void exec_command(char *cmd, char **args);
+char *check_for_path(vars_t *vars);
+void execute_command(vars_t *vars);
+void handle_input(vars_t *vars, size_t len_buffer, unsigned int is_pipe);
+char **tokenize(char *str, const char *delimiter);
+char **create_env(char **environment);
 void free_env(char **env);
-int len_env(char **env);
-void print_error(vars_t *vars, char *msg);
+void _puts(const char *str);
 #endif
