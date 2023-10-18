@@ -6,14 +6,14 @@
  *
  * Return: void
  */
-static void ctrl_sig_handler(int unused_var, unsigned int *sig_received)
+void ctrl_sig_handler(int unused_var, unsigned int *sig_received)
 {
 	(void) unused_var;
 	if (sig_received == 0)
 		_puts("\n$");
 	else
 		_puts("\n");
-
+}
 
 /**
  * main - Entry point for the shell program

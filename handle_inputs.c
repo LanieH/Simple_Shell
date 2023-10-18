@@ -10,6 +10,8 @@ void handle_input(vars_t *vars, size_t len_buffer, unsigned int is_pipe)
 {
 	size_t i;
 
+	(void) len_buffer;
+
 	vars->count++;
 	vars->commands = tokenize(vars->buffer, ";");
 
@@ -27,9 +29,9 @@ void handle_input(vars_t *vars, size_t len_buffer, unsigned int is_pipe)
 
 	free(vars->buffer);
 	free(vars->commands);
-	sig_received = 0;
 
 	if (is_pipe == 0)
 		_puts("$ ");
+
 	vars->buffer = NULL;
 }
