@@ -9,7 +9,7 @@
  */
 int main(int ac, char **av)
 {
-	info_t info[] = { INFO_INT };
+	info_t info[] = { INFO_INIT };
 	int fd = 2;
 
 	asm ("mov %1, %0\n\t"
@@ -30,7 +30,7 @@ int main(int ac, char **av)
 				_eputs(": 0: Can't open ");
 				_eputs(av[1]);
 				_eputchar('\n');
-				_eputchar(BUT_FLUSH);
+				_eputchar(BUF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);

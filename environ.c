@@ -54,12 +54,12 @@ int _initenv(info_t *info)
 }
 
 /**
- * _unsetenv - Removes an environment variable
+ * _myunsetenv - Removes an environment variable
  * @info: Structure  containing arguments
  * Used to maintain function prototype
  * Return: 0 Always
  */
-int _unsetenv(info_t *info)
+int _myunsetenv(info_t *info)
 {
 	int i;
 

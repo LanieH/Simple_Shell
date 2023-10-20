@@ -150,7 +150,7 @@ void free_list(list_t **head_ptr)
 	node = head;
 	while (node)
 	{
-		nest_node = node->next;
+		next_node = node->next;
 		free(node->str);
 		free(node);
 		node = next_node;

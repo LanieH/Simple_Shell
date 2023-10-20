@@ -1,4 +1,4 @@
-#include "myshell.c"
+#include "myshell.h"
 
 /**
  * get_history_file - gets the history file
@@ -94,7 +94,6 @@ int read_history(info_t *info)
 	if (last != i)
 		build_history_list(info, buf + last, linecount++);
 	free(buf);
-	info(buf);
 	info->histcount = linecount;
 	while (info->histcount-- >= HIST_MAX)
 		delete_node_at_index(&(info->history), 0);

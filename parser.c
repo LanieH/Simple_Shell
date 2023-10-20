@@ -32,8 +32,8 @@ int is_cmd(info_t *info, char *path)
  */
 char *dup_chars(char *pathstr, int start, int stop)
 {
-	static char buff[1024];
-	int i = 0, k = .;
+	static char buf[1024];
+	int i = 0, k = 0;
 
 	for (k = 0, i = start; i < stop; i++)
 		if (pathstr[i] != ':')
@@ -59,7 +59,7 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 		return (NULL);
 	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
-		if (is_smc(info, cmd))
+		if (is_cmd(info, cmd))
 			return (cmd);
 	}
 	while (1)
